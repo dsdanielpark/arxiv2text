@@ -22,7 +22,6 @@ $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 
 
 ## Usage 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zzzlTIh0kt2MdjLzvXRby1rWbHzmog8t?usp=sharing) 
 
 
 *arxiv_to_text*
@@ -50,13 +49,6 @@ output_dir = "output_folder"
 arxiv_to_md(pdf_url, output_dir)
 ```
 
-
-## Contributors
-I would like to express my sincere gratitude to all the contributors.
-
-<a href="https://github.com/dsdanielpark/Bard_API/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=dsdanielpark/Bard_API" />
-</a>
 
 
 <br>
