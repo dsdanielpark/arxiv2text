@@ -1,5 +1,4 @@
 import re
-
 from setuptools import find_packages
 from setuptools import setup
 
@@ -25,7 +24,7 @@ version = get_version()
 
 setup(
     name="arxiv2text",
-    version="0.1.0",
+    version="0.1.1",
     author="daniel park",
     author_email="parkminwoo1991@gmail.com",
     description="Converting PDF files to text, mainly with a focus on arXiv papers.",
@@ -34,7 +33,7 @@ setup(
     url="https://github.com/dsdanielpark/arxiv2text",
     packages=find_packages(exclude=[]),
     python_requires=">=3.6",
-    install_requires=["pdfminer"],
+    install_requires=["pdfminer", "pdfminer", "beautifulsoup4"],
     keywords="Python, Paper, Data Mining, Translation",
     classifiers=[
         "Development Status :: 3 - Alpha",
