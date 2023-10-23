@@ -4,6 +4,7 @@ import requests
 from pdfminer.high_level import extract_text
 from pdfminer.layout import LAParams
 
+
 def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
     """
     Extracts the Abstract and Introduction sections from a PDF from an arXiv URL
@@ -27,7 +28,9 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
     filename = os.path.join(output_folder, pdf_url.split("/")[-1] + ".md")
 
     # Extract text from the PDF
-    extracted_text = extract_text(io.BytesIO(requests.get(pdf_url).content), laparams=LAParams())
+    extracted_text = extract_text(
+        io.BytesIO(requests.get(pdf_url).content), laparams=LAParams()
+    )
 
     # Find the start and end of the Abstract and Introduction sections
     start_abstract = extracted_text.find("Abstract")
@@ -36,7 +39,9 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
 
     # Extract Abstract and Introduction sections
     abstract = extracted_text[start_abstract:end_abstract].strip()
-    introduction = extracted_text[start_introduction:].strip() if start_introduction != -1 else ""
+    introduction = (
+        extracted_text[start_introduction:].strip() if start_introduction != -1 else ""
+    )
 
     # Save the Abstract and Introduction as Markdown
     markdown_text = f"# {abstract}\n\n# {introduction}"
