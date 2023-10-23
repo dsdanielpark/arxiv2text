@@ -5,8 +5,19 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 
+def arxiv_to_text(pdf_url: str) -> str:
+    """
+    Extract text content from a PDF file located at the specified URL.
 
-def arxiv_to_text(pdf_url):
+    Args:
+        pdf_url (str): The URL of the PDF file to extract text from.
+
+    Returns:
+        str: The extracted text content from the PDF.
+
+    Raises:
+        requests.exceptions.RequestException: If there is an issue with the HTTP request to the URL.
+    """
     response = requests.get(pdf_url)
     pdf_file = io.BytesIO(response.content)
 

@@ -8,7 +8,22 @@ from pdfminer.layout import LAParams
 from bs4 import BeautifulSoup
 import os
 
-def arxiv_to_html(pdf_url, output_folder):
+def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
+    """
+    Convert a PDF from an arXiv URL to an HTML file and save it in the specified folder.
+
+    Args:
+        pdf_url (str): The URL of the PDF on arXiv.
+        output_folder (str): The folder where the HTML file will be saved.
+
+    Returns:
+        None
+
+    Example:
+    >>> pdf_url = "https://arxiv.org/pdf/2310.06825"
+    >>> output_folder = "output"
+    >>> arxiv_to_html(pdf_url, output_folder)
+    """
     response = requests.get(pdf_url)
     pdf_file = io.BytesIO(response.content)
 
@@ -44,16 +59,7 @@ def arxiv_to_html(pdf_url, output_folder):
     filename = pdf_url.split("/")[-1] + ".html"
     output_path = os.path.join(output_folder, filename)
 
-    # Adjust the path separators based on the operating system
-    output_path = output_path.replace("/", os.path.sep)  # On non-Windows
-    output_path = output_path.replace("\\", os.path.sep)  # On Windows
-
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(str(soup))
 
     print("HTML content saved to", output_path)
-
-# Example usage:
-pdf_url = "https://arxiv.org/pdf/2310.06825"
-output_folder = "output"
-arxiv_to_html(pdf_url, output_folder)
