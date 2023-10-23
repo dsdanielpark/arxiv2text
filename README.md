@@ -37,17 +37,30 @@ $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zzzlTIh0kt2MdjLzvXRby1rWbHzmog8t?usp=sharing) 
 
 
-Simple Usage
+*arxiv_to_text*
 
 ```python
-from bardapi import Bard
+pdf_url = "https://arxiv.org/pdf/2310.06825"
 
-token = 'xxxxxxx'
-bard = Bard(token=token)
-bard.get_answer("나와 내 동년배들이 좋아하는 뉴진스에 대해서 알려줘")['content']
+extracted_text = arxiv_to_text(pdf_url)
 ```
 
+*arxiv_to_html*
 
+```python
+pdf_url = "https://arxiv.org/pdf/2310.06825"
+
+output_dir = "output_folder"
+arxiv_to_html(pdf_url, output_dir)
+```
+
+*arxiv_to_md*
+```python
+pdf_url = "https://arxiv.org/pdf/2310.06825"
+
+output_dir = "output_folder"
+arxiv_to_md(pdf_url, output_dir)
+```
 
 
 ## Contributors
