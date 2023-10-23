@@ -8,6 +8,7 @@ from pdfminer.layout import LAParams
 from bs4 import BeautifulSoup
 import os
 
+
 def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
     """
     Convert a PDF from an arXiv URL to an HTML file and save it in the specified folder.
