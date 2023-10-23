@@ -34,8 +34,7 @@ setup(
     url="https://github.com/dsdanielpark/arxiv2text",
     packages=find_packages(exclude=[]),
     python_requires=">=3.6",
-    install_requires=[
-    ],
+    install_requires=["pdfminer"],
     keywords="Python, Paper, Data Mining, Translation",
     classifiers=[
         "Development Status :: 3 - Alpha",
