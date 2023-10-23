@@ -31,7 +31,7 @@ $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 ```python
 from arxiv2text import arxiv_to_text
 
-pdf_url = "https://arxiv.org/pdf/2310.06825"
+pdf_url = "https://arxiv.org/pdf/1706.03762"
 
 extracted_text = arxiv_to_text(pdf_url)
 ```
@@ -41,7 +41,7 @@ extracted_text = arxiv_to_text(pdf_url)
 ```python
 from arxiv2text import arxiv_to_html
 
-pdf_url = "https://arxiv.org/pdf/2310.06825"
+pdf_url = "https://arxiv.org/pdf/1706.03762"
 
 output_dir = "output_folder"
 arxiv_to_html(pdf_url, output_dir)
@@ -51,7 +51,7 @@ arxiv_to_html(pdf_url, output_dir)
 ```python
 from arxiv2text import arxiv_to_md
 
-pdf_url = "https://arxiv.org/pdf/2310.06825"
+pdf_url = "https://arxiv.org/pdf/1706.03762"
 
 output_dir = "output_folder"
 arxiv_to_md(pdf_url, output_dir)
