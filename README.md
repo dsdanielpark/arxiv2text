@@ -11,6 +11,7 @@ Development Status :: 3 - Alpha
 
 A Python package that converts arXiv documents into structured text using arXiv PDF URLs.
 
+<br>
 
 ## Install
 ```
@@ -20,6 +21,7 @@ $ pip install arxiv2text
 $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 ```
 
+<br>
 
 ## Usage 
 
@@ -27,6 +29,8 @@ $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 *arxiv_to_text*
 
 ```python
+from arxiv2text import arxiv_to_text
+
 pdf_url = "https://arxiv.org/pdf/2310.06825"
 
 extracted_text = arxiv_to_text(pdf_url)
@@ -35,6 +39,8 @@ extracted_text = arxiv_to_text(pdf_url)
 *arxiv_to_html*
 
 ```python
+from arxiv2text import arxiv_to_html
+
 pdf_url = "https://arxiv.org/pdf/2310.06825"
 
 output_dir = "output_folder"
@@ -43,6 +49,8 @@ arxiv_to_html(pdf_url, output_dir)
 
 *arxiv_to_md*
 ```python
+from arxiv2text import arxiv_to_md
+
 pdf_url = "https://arxiv.org/pdf/2310.06825"
 
 output_dir = "output_folder"
