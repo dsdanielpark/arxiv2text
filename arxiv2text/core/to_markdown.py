@@ -25,6 +25,7 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
     ```
     """
     # Extract the last part of the PDF URL to use as the filename
+    os.makedirs(output_folder, exist_ok=True)
     filename = os.path.join(output_folder, pdf_url.split("/")[-1] + ".md")
 
     # Extract text from the PDF

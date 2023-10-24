@@ -25,6 +25,7 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
     >>> output_folder = "output"
     >>> arxiv_to_html(pdf_url, output_folder)
     """
+    os.makedirs(output_folder, exist_ok=True)
     response = requests.get(pdf_url)
     pdf_file = io.BytesIO(response.content)
 
