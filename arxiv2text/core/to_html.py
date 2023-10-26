@@ -33,14 +33,21 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
     laparams = LAParams()
     laparams.box_width = 1000
 
-    codec = 'utf-8'
+    codec = "utf-8"
     output_file = tempfile.NamedTemporaryFile(delete=False)
 
     fontsize = 10
     laparams.char_margin = fontsize * 1.5
     laparams.all_texts = True
 
-    html_converter = HTMLConverter(resource_manager, output_file, codec=codec, laparams=laparams, layoutmode="exact", scale=1)
+    html_converter = HTMLConverter(
+        resource_manager,
+        output_file,
+        codec=codec,
+        laparams=laparams,
+        layoutmode="exact",
+        scale=1,
+    )
     interpreter = PDFPageInterpreter(resource_manager, html_converter)
 
     for page in PDFPage.get_pages(pdf_file):
@@ -48,12 +55,12 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
 
     html_converter.close()
 
-    with open(output_file.name, 'r', encoding=codec) as file:
+    with open(output_file.name, "r", encoding=codec) as file:
         html = file.read()
 
-    soup = BeautifulSoup(html, 'html.parser')
-    style = soup.new_tag('style')
-    style.string = f'.ltxt {{font-size: {fontsize}px;}}'
+    soup = BeautifulSoup(html, "html.parser")
+    style = soup.new_tag("style")
+    style.string = f".ltxt {{font-size: {fontsize}px;}}"
     soup.head.append(style)
 
     # Extract the last part of the PDF URL to use as the filename
