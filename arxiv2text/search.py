@@ -5,7 +5,7 @@ from arxiv2text.constant import SUBJECTS
 
 
 def fetch_arxiv_papers(
-    subject: str, start_page: int, page_step: int, print_bool: bool = False
+    subject: str, start_page: int, page_step: int = 200, print_bool: bool = False
 ) -> dict:
     """
     Fetch a list of arXiv papers based on a subject and optional criteria.
@@ -14,7 +14,7 @@ def fetch_arxiv_papers(
         subject (str): The subject or topic of the papers to search for. It will be
             converted to lowercase for case-insensitive matching.
         start_page (int): The starting page for retrieving search results.
-        page_step (int): The maximum number of papers to retrieve (default is 2).
+        page_step (int): The maximum number of papers to retrieve (default is 200).
         print_bool (bool): Whether to print the retrieved paper information (default is False).
 
     Returns:
