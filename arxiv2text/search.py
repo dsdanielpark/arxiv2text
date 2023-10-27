@@ -4,7 +4,9 @@ from arxiv2text.utils import replace_enter_to_space, find_similar_subjects
 from arxiv2text.constant import SUBJECTS
 
 
-def fetch_arxiv_papers(subject: str, max_results: int, print_bool: bool = False) -> dict:
+def fetch_arxiv_papers(
+    subject: str, max_results: int, print_bool: bool = False
+) -> dict:
     """
     Fetch a list of arXiv papers based on a subject and optional criteria.
 
@@ -35,34 +37,44 @@ def fetch_arxiv_papers(subject: str, max_results: int, print_bool: bool = False)
 
     search_query = f'all:{subject.replace(" ", "+")}'
 
-    url = f'http://export.arxiv.org/api/query?search_query={search_query}&start=0&max_results={max_results}'
+    url = f"http://export.arxiv.org/api/query?search_query={search_query}&start=0&max_results={max_results}"
     response = urllib.request.urlopen(url)
-    data = response.read().decode('utf-8')
-    namespace = {'atom': 'http://www.w3.org/2005/Atom', 'opensearch': 'http://a9.com/-/spec/opensearch/1.1', 'arxiv': 'http://arxiv.org/schemas/atom'}
+    data = response.read().decode("utf-8")
+    namespace = {
+        "atom": "http://www.w3.org/2005/Atom",
+        "opensearch": "http://a9.com/-/spec/opensearch/1.1",
+        "arxiv": "http://arxiv.org/schemas/atom",
+    }
     root = ET.fromstring(data)
     entry_dict = {}
 
-    for i, entry in enumerate(root.findall('.//atom:entry', namespaces=namespace)[:max_results]):
+    for i, entry in enumerate(
+        root.findall(".//atom:entry", namespaces=namespace)[:max_results]
+    ):
         entry_info = {}
-        entry_info['Title'] = replace_enter_to_space(entry.find('./atom:title', namespaces=namespace).text)
-        abstract = entry.find('./atom:summary', namespaces=namespace).text.strip()
+        entry_info["Title"] = replace_enter_to_space(
+            entry.find("./atom:title", namespaces=namespace).text
+        )
+        abstract = entry.find("./atom:summary", namespaces=namespace).text.strip()
         abstract = replace_enter_to_space(abstract)
-        entry_info['Abstract'] = abstract
-        entry_info['URL'] = replace_enter_to_space(entry.find('./atom:id', namespaces=namespace).text)
-        published = entry.find('./atom:published', namespaces=namespace).text
-        entry_info['Published'] = published
-        doi = entry.find('./arxiv:doi', namespaces=namespace).text
-        entry_info['DOI'] = doi
+        entry_info["Abstract"] = abstract
+        entry_info["URL"] = replace_enter_to_space(
+            entry.find("./atom:id", namespaces=namespace).text
+        )
+        published = entry.find("./atom:published", namespaces=namespace).text
+        entry_info["Published"] = published
+        doi = entry.find("./arxiv:doi", namespaces=namespace).text
+        entry_info["DOI"] = doi
         entry_dict[i] = entry_info
 
     if print_bool:
         for i, entry in entry_dict.items():
             print(f"Paper {i + 1}")
-            print("Title:", entry['Title'])
-            print("Abstract:", entry['Abstract'])
-            print("URL:", entry['URL'])
-            print("Published:", entry['Published'])
-            print("DOI:", entry['DOI'])
+            print("Title:", entry["Title"])
+            print("Abstract:", entry["Abstract"])
+            print("URL:", entry["URL"])
+            print("Published:", entry["Published"])
+            print("DOI:", entry["DOI"])
             print("\n")
 
     return entry_dict

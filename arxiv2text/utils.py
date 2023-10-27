@@ -1,9 +1,12 @@
 def replace_enter_to_space(x):
-    x = x.replace('\n', ' ')
-    x = ' '.join(x.split())
+    x = x.replace("\n", " ")
+    x = " ".join(x.split())
     return x
 
-def find_similar_subjects(input_subject: str, subject_list: list, threshold: float = 0.7) -> list:
+
+def find_similar_subjects(
+    input_subject: str, subject_list: list, threshold: float = 0.7
+) -> list:
     """
     Find subjects in a list that are similar to the given input subject.
 
