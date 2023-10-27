@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import urllib.request
-from arxiv2text.utils import replace_enter_to_space
+from arxiv2text.utils import replace_enter_to_space, find_similar_subjects
+from arxiv2text.constant import SUBJECTS
 
 
 def fetch_arxiv_papers(subject: str, max_results: int, print_bool: bool = False) -> dict:
@@ -23,7 +24,17 @@ def fetch_arxiv_papers(subject: str, max_results: int, print_bool: bool = False)
             'DOI': str           # Digital Object Identifier of the paper
         }
     """
+    subject = subject.lower()
+    if subject not in SUBJECTS:
+        possible_subjects = find_similar_subjects(subject, SUBJECTS)
+        if possible_subjects:
+            print(f"Possible subjects: {', '.join(possible_subjects)}")
+        else:
+            print("No matching subjects found.")
+        return {}
+
     search_query = f'all:{subject.replace(" ", "+")}'
+
     url = f'http://export.arxiv.org/api/query?search_query={search_query}&start=0&max_results={max_results}'
     response = urllib.request.urlopen(url)
     data = response.read().decode('utf-8')
