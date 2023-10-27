@@ -62,6 +62,16 @@ output_dir = "output_folder"
 arxiv_to_md(pdf_url, output_dir)
 ```
 
+<br>
+
+## [arXiv API](https://info.arxiv.org/help/api/user-manual.html)
+```python
+import urllib.request as libreq
+with libreq.urlopen('http://export.arxiv.org/api/query?search_query=all:electron&start=0&max_results=1') as url:
+  r = url.read()
+print(r)
+
+```
 
 
 <br>
