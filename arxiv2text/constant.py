@@ -1,4 +1,13 @@
+# https://arxiv.org/category_taxonomy
 SUBJECTS = [
+    "Computer Science",
+    "Economics",
+    "Electrical Engineering and Systems Science",
+    "Mathematics",
+    "Physics",
+    "Quantitative Biology",
+    "Quantitative Finance",
+    "Statistics"
     "Astrophysics of Galaxies",
     "Cosmology and Nongalactic Astrophysics",
     "Earth and Planetary Astrophysics",
