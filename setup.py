@@ -24,7 +24,7 @@ version = get_version()
 
 setup(
     name="arxiv2text",
-    version="0.1.4",
+    version="0.1.5",
     author="daniel park",
     author_email="parkminwoo1991@gmail.com",
     description="Converting PDF files to text, mainly with a focus on arXiv papers.",
