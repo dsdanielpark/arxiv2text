@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 import urllib.request
-from arxiv2text.utils import replace_enter_to_space, find_similar_subjects
+from arxiv2text.utils import replace_enter_to_space, find_most_similar_subject
 from arxiv2text.constant import SUBJECTS
 
 
@@ -31,7 +31,7 @@ def fetch_arxiv_papers(
     """
     subject = subject.lower()
     if subject not in SUBJECTS:
-        possible_subjects = find_similar_subjects(subject, SUBJECTS)
+        possible_subjects = find_most_similar_subject(subject, SUBJECTS)
         if possible_subjects:
             print(f"Possible subjects: {', '.join(possible_subjects)}")
         else:
