@@ -5,5 +5,5 @@ from arxiv2text.convert.to_markdown import arxiv_to_md
 from arxiv2text.search import fetch_arxiv_papers
 
 __author__ = "daniel park <parkminwoo1991@gmail.com>"
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 __all__ = ["arxiv_to_text", "arxiv_to_html", "arxiv_to_md", "fetch_arxiv_papers"]
