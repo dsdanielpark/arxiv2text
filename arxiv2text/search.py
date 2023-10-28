@@ -33,10 +33,10 @@ def fetch_arxiv_papers(
     if subject not in SUBJECTS:
         possible_subjects = find_most_similar_subject(subject, SUBJECTS)
         if possible_subjects:
-            print(f"Possible subjects: {', '.join(possible_subjects)}")
+            print(f"Possible subjects: {possible_subjects}")
         else:
             print("No matching subjects found.")
-        return {}
+            return {}
 
     search_query = f'all:{subject.replace(" ", "+")}'
 
