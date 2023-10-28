@@ -24,12 +24,6 @@ $ pip install git+https://github.com/dsdanielpark/arxiv2text.git
 <br>
 
 ## Usage 
-We use the pdf link as input, not the arXiv abs link. The functionality is incomplete due to the diversity of pdf file structures.
-Paper: Attention Is All You Need
-- pdf url: https://arxiv.org/pdf/1706.03762
-- Abstract url: https://arxiv.org/abs/1706.03762
-
-<br>
 
 *arxiv_to_text*
 
