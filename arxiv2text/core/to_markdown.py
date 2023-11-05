@@ -4,7 +4,6 @@ import requests
 from pdfminer.high_level import extract_text
 from pdfminer.layout import LAParams
 
-
 def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
     """
     Extracts the Abstract and Introduction sections from a PDF from an arXiv URL
@@ -46,6 +45,9 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
 
     # Save the Abstract and Introduction as Markdown
     markdown_text = f"# {abstract}\n\n# {introduction}"
+
+    if len(markdown_text) < 20:
+        markdown_text = extracted_text
 
     # Save the Markdown content to the specified file
     with open(filename, "w", encoding="utf-8") as markdown_file:
