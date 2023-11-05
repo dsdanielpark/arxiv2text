@@ -24,7 +24,7 @@ version = get_version()
 
 setup(
     name="arxiv2text",
-    version="0.1.4",
+    version="0.1.9",
     author="daniel park",
     author_email="parkminwoo1991@gmail.com",
     description="Converting PDF files to text, mainly with a focus on arXiv papers.",
@@ -33,7 +33,7 @@ setup(
     url="https://github.com/dsdanielpark/arxiv2text",
     packages=find_packages(exclude=[]),
     python_requires=">=3.6",
-    install_requires=["beautifulsoup4", "pdfminer-six"],
+    install_requires=["beautifulsoup4", "pdfminer-six", "scikit-learn"],
     keywords="Python, Paper, Data Mining, Translation",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -43,7 +43,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: Apache License",
         "Programming Language :: Python :: 3.6",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
