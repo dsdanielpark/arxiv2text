@@ -32,6 +32,9 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
         io.BytesIO(requests.get(pdf_url).content), laparams=LAParams()
     )
 
+    # Remove single newline characters
+    extracted_text = extracted_text.replace("\n", " ")
+
     # Find the start and end of the Abstract and Introduction sections
     start_abstract = extracted_text.find("Abstract")
     start_introduction = extracted_text.find("Introduction")
@@ -43,7 +46,7 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
         extracted_text[start_introduction:].strip() if start_introduction != -1 else ""
     )
 
-    # Save the Abstract and Introduction as Markdown
+    # Construct Markdown content
     markdown_text = f"# {abstract}\n\n# {introduction}"
 
     if len(markdown_text) < 20:
