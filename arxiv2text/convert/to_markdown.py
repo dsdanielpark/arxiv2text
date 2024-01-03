@@ -52,6 +52,8 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
     if len(markdown_text) < 20:
         markdown_text = extracted_text
 
+    markdown_text = markdown_text.replace('\n', ' ').replace('  ', '\n\n')
+
     # Save the Markdown content to the specified file
     with open(filename, "w", encoding="utf-8") as markdown_file:
         markdown_file.write(markdown_text)
