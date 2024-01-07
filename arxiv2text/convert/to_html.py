@@ -9,22 +9,34 @@ from bs4 import BeautifulSoup
 import os
 
 
-def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
+def arxiv_to_html(pdf_url: str, output_folder: str) -> str:
     """
-    Convert a PDF from an arXiv URL to an HTML file and save it in the specified folder.
+    Converts a PDF from an arXiv URL into an HTML file and saves it in the specified folder.
+    
+    This function downloads the PDF from the given arXiv URL, converts it into HTML format,
+    and saves the resulting HTML file in the output folder. The HTML file is named
+    after the last part of the PDF URL with an `.html` extension.
 
     Args:
         pdf_url (str): The URL of the PDF on arXiv.
-        output_folder (str): The folder where the HTML file will be saved.
+        output_folder (str): The directory path where the HTML file will be saved.
 
     Returns:
-        None
+        str: The complete HTML content of the converted file.
 
     Example:
-    >>> pdf_url = "https://arxiv.org/pdf/2310.06825"
-    >>> output_folder = "output"
-    >>> arxiv_to_html(pdf_url, output_folder)
+    ```
+    pdf_url = "https://arxiv.org/pdf/2310.06825"
+    output_folder = "output"
+    html_content = arxiv_to_html(pdf_url, output_folder)
+    print("HTML content saved to", output_folder)
+    ```
+    
+    Note:
+        The function creates the output folder if it does not exist.
+        The HTML file includes basic styling for improved readability.
     """
+    # Function implementation remains unchanged.
     os.makedirs(output_folder, exist_ok=True)
     response = requests.get(pdf_url)
     pdf_file = io.BytesIO(response.content)
@@ -72,3 +84,5 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> None:
         f.write(str(soup))
 
     print("HTML content saved to", output_path)
+
+    return soup

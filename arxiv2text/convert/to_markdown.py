@@ -4,23 +4,23 @@ import requests
 from pdfminer.high_level import extract_text
 from pdfminer.layout import LAParams
 
-def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
+def arxiv_to_md(pdf_url: str, output_folder: str) -> str:
     """
     Extracts the Abstract and Introduction sections from a PDF from an arXiv URL
-    and saves them as a Markdown file.
+    and saves them as a Markdown file. The function returns the Markdown text as a string.
 
     Args:
         pdf_url (str): The URL of the PDF on arXiv.
         output_folder (str): The folder where the Markdown file will be saved.
 
     Returns:
-        None
+        str: The Markdown text extracted from the PDF.
 
     Example:
     ```python
     pdf_url = "https://arxiv.org/pdf/2310.06825"
     output_folder = "output"
-    arxiv_to_md(pdf_url, output_folder)
+    markdown_text = arxiv_to_md(pdf_url, output_folder)
     ```
     """
     # Extract the last part of the PDF URL to use as the filename
@@ -59,3 +59,5 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> None:
         markdown_file.write(markdown_text)
 
     print(f"Markdown content saved to {filename}")
+
+    return markdown_text
