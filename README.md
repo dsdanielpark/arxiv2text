@@ -9,7 +9,7 @@ Development Status :: 3 - Alpha
 <!-- <a href="https://www.buymeacoffee.com/parkminwoo"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-orange.png" height="20px"></a> -->
 </p>
 
-A Python package that converts arXiv documents into structured text using arXiv PDF URLs.
+A Python package that converts arXiv documents into structured text using arXiv PDF URLs. If it's a PDF link other than arXiv, it's mostly feasible. If extraction to markdown fails, try extracting to text or HTML.
 
 <br>
 
