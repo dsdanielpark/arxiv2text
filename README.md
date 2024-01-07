@@ -32,7 +32,7 @@ from arxiv2text import arxiv_to_text
 
 pdf_url = "https://arxiv.org/pdf/1706.03762"
 
-extracted_text = arxiv_to_text(pdf_url)
+extracted_text = arxiv_to_text(pdf_url, output_dir) # output_dir is optional argument
 ```
 
 *arxiv_to_html*
