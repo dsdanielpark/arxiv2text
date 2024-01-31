@@ -1,7 +1,10 @@
 data
-notebooks
 private-notebooks
 func_test.ipynb
+
+*.csv
+*.md
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
