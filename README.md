@@ -11,6 +11,11 @@ Development Status :: 3 - Alpha
 
 A Python package that converts arXiv documents into structured text using arXiv PDF URLs. If it's a PDF link other than arXiv, it's mostly feasible. If extraction to markdown fails, try extracting to text or HTML.
 
+However, this package may be extracted as incomplete text, particularly in relation to expressions, as it is used as a sub-package for archival translations into other languages (e.g., Korean). Some parts of the text may be incomplete, and further post-processing will be required. The current plan is to perform self SFT to correctly align these expressions into LaTeX and aim to translate and summarize them using LLM.
+
+We are considering transformations into the [LaTeXML](https://github.com/brucemiller/LaTeXML) format in the future. Therefore, it is currently challenging to expect a fully complete extraction in a general sense.
+
+
 <br>
 
 ## Install
