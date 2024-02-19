@@ -75,9 +75,11 @@ print(r)
 <br>
 
 ## Project Plan
-- 논문 내 이미지 추출 [x]
-- 논문 내 주석과 이미지 추출 [x]
-- LeTeXML로 변경[ ]
+- Image extraction in paper
+- Extracting annotations and images from the paper and automatically matching them.
+- Conversion with LeTeXML
+- LaTeX syntax error correction
+- Summary and translation based on LLM
 
 <br>
 
