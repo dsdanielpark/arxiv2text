@@ -40,46 +40,60 @@ def fetch_arxiv_papers(
 
     search_query = f'all:{subject.replace(" ", "+")}'
 
-    url = f'http://export.arxiv.org/api/query?search_query={search_query}&start={start_page}&max_results={page_step}'
+    url = f"http://export.arxiv.org/api/query?search_query={search_query}&start={start_page}&max_results={page_step}"
     response = urllib.request.urlopen(url)
-    data = response.read().decode('utf-8')
-    namespace = {'atom': 'http://www.w3.org/2005/Atom', 'opensearch': 'http://a9.com/-/spec/opensearch/1.1', 'arxiv': 'http://arxiv.org/schemas/atom'}
+    data = response.read().decode("utf-8")
+    namespace = {
+        "atom": "http://www.w3.org/2005/Atom",
+        "opensearch": "http://a9.com/-/spec/opensearch/1.1",
+        "arxiv": "http://arxiv.org/schemas/atom",
+    }
     root = ET.fromstring(data)
     entry_dict = []
-    
-    for entry in root.findall('.//atom:entry', namespaces=namespace):
+
+    for entry in root.findall(".//atom:entry", namespaces=namespace):
         entry_info = {}
 
-        title_element = entry.find('./atom:title', namespaces=namespace)
-        entry_info['Title'] = replace_enter_to_space(title_element.text) if title_element is not None else ''
+        title_element = entry.find("./atom:title", namespaces=namespace)
+        entry_info["Title"] = (
+            replace_enter_to_space(title_element.text)
+            if title_element is not None
+            else ""
+        )
 
-        abstract_element = entry.find('./atom:summary', namespaces=namespace)
-        entry_info['Abstract'] = replace_enter_to_space(abstract_element.text.strip()) if abstract_element is not None else ''
+        abstract_element = entry.find("./atom:summary", namespaces=namespace)
+        entry_info["Abstract"] = (
+            replace_enter_to_space(abstract_element.text.strip())
+            if abstract_element is not None
+            else ""
+        )
 
-        url_element = entry.find('./atom:id', namespaces=namespace)
-        entry_info['URL'] = url_element.text if url_element is not None else ''
+        url_element = entry.find("./atom:id", namespaces=namespace)
+        entry_info["URL"] = url_element.text if url_element is not None else ""
 
-        published_element = entry.find('./atom:published', namespaces=namespace)
-        entry_info['Published'] = published_element.text if published_element is not None else ''
+        published_element = entry.find("./atom:published", namespaces=namespace)
+        entry_info["Published"] = (
+            published_element.text if published_element is not None else ""
+        )
 
-        doi_element = entry.find('./arxiv:doi', namespaces=namespace)
-        entry_info['DOI'] = doi_element.text if doi_element is not None else ''
+        doi_element = entry.find("./arxiv:doi", namespaces=namespace)
+        entry_info["DOI"] = doi_element.text if doi_element is not None else ""
 
         entry_dict.append(entry_info)
 
     if print_bool:
         for i, entry in enumerate(entry_dict):
             print(f"Paper {i + 1}")
-            if entry['Title']:
-                print("Title:", entry['Title'])
-            if entry['Abstract']:
-                print("Abstract:", entry['Abstract'])
-            if entry['URL']:
-                print("URL:", entry['URL'])
-            if entry['Published']:
-                print("Published:", entry['Published'])
-            if entry['DOI']:
-                print("DOI:", entry['DOI'])
+            if entry["Title"]:
+                print("Title:", entry["Title"])
+            if entry["Abstract"]:
+                print("Abstract:", entry["Abstract"])
+            if entry["URL"]:
+                print("URL:", entry["URL"])
+            if entry["Published"]:
+                print("Published:", entry["Published"])
+            if entry["DOI"]:
+                print("DOI:", entry["DOI"])
             print("\n")
 
     return entry_dict

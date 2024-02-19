@@ -1,10 +1,12 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 def replace_enter_to_space(x):
     x = x.replace("\n", " ")
     x = " ".join(x.split())
     return x
+
 
 def find_most_similar_subject(
     input_subject: str, subject_list: list, threshold: float = 0.7
@@ -22,14 +24,14 @@ def find_most_similar_subject(
     """
     vectorizer = TfidfVectorizer()
     subject_vectors = vectorizer.fit_transform([input_subject] + subject_list)
-    
+
     input_vector = subject_vectors[0]
     subject_vectors = subject_vectors[1:]
-    
+
     similarities = cosine_similarity(input_vector, subject_vectors)[0]
-    
+
     max_similarity = max(similarities)
-    
+
     if max_similarity >= threshold:
         most_similar_index = similarities.argmax()
         most_similar_subject = subject_list[most_similar_index]

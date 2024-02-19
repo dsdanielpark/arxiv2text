@@ -7,6 +7,7 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 
+
 def arxiv_to_text(pdf_url: str, output_folder: Optional[str] = None) -> str:
     """
     Extract text content from a PDF file located at the specified URL. Optionally saves the extracted text to a file.
@@ -24,7 +25,9 @@ def arxiv_to_text(pdf_url: str, output_folder: Optional[str] = None) -> str:
     try:
         response = requests.get(pdf_url)
     except Exception as e:
-        print("The PDF file cannot be found. Please check if the paper is available on the respective arXiv.")
+        print(
+            "The PDF file cannot be found. Please check if the paper is available on the respective arXiv."
+        )
         print(e)
         return None
     pdf_file = io.BytesIO(response.content)
@@ -44,8 +47,8 @@ def arxiv_to_text(pdf_url: str, output_folder: Optional[str] = None) -> str:
     # Save the text to a file if output_folder is specified
     if output_folder:
         os.makedirs(output_folder, exist_ok=True)
-        file_name = os.path.join(output_folder, pdf_url.split('/')[-1] + '.txt')
-        with open(file_name, 'w', encoding='utf-8') as file:
+        file_name = os.path.join(output_folder, pdf_url.split("/")[-1] + ".txt")
+        with open(file_name, "w", encoding="utf-8") as file:
             file.write(extracted_text)
         print(f"Extracted text saved to {file_name}")
 

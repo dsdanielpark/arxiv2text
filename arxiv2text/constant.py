@@ -7,8 +7,7 @@ SUBJECTS = [
     "Physics",
     "Quantitative Biology",
     "Quantitative Finance",
-    "Statistics"
-    "Astrophysics of Galaxies",
+    "Statistics" "Astrophysics of Galaxies",
     "Cosmology and Nongalactic Astrophysics",
     "Earth and Planetary Astrophysics",
     "High Energy Astrophysical Phenomena",

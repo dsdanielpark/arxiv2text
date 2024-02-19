@@ -12,7 +12,7 @@ import os
 def arxiv_to_html(pdf_url: str, output_folder: str) -> str:
     """
     Converts a PDF from an arXiv URL into an HTML file and saves it in the specified folder.
-    
+
     This function downloads the PDF from the given arXiv URL, converts it into HTML format,
     and saves the resulting HTML file in the output folder. The HTML file is named
     after the last part of the PDF URL with an `.html` extension.
@@ -31,7 +31,7 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> str:
     html_content = arxiv_to_html(pdf_url, output_folder)
     print("HTML content saved to", output_folder)
     ```
-    
+
     Note:
         The function creates the output folder if it does not exist.
         The HTML file includes basic styling for improved readability.
@@ -41,7 +41,9 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> str:
     try:
         response = requests.get(pdf_url)
     except Exception as e:
-        print("The PDF file cannot be found. Please check if the paper is available on the respective arXiv.")
+        print(
+            "The PDF file cannot be found. Please check if the paper is available on the respective arXiv."
+        )
         print(e)
         return None
     pdf_file = io.BytesIO(response.content)
