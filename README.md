@@ -75,6 +75,7 @@ print(r)
 <br>
 
 ## Project Plan
+I welcome any contributions related to the project plan. Also, I'm waiting for collaborative contributors to enrich the package together. Thank you.
 - Image extraction in paper
 - Extracting annotations and images from the paper and automatically matching them.
 - Conversion with LeTeXML
