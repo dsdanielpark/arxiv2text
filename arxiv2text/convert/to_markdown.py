@@ -28,9 +28,14 @@ def arxiv_to_md(pdf_url: str, output_folder: str) -> str:
     filename = os.path.join(output_folder, pdf_url.split("/")[-1] + ".md")
 
     # Extract text from the PDF
-    extracted_text = extract_text(
-        io.BytesIO(requests.get(pdf_url).content), laparams=LAParams()
-    )
+    try:
+        extracted_text = extract_text(
+            io.BytesIO(requests.get(pdf_url).content), laparams=LAParams()
+        )
+    except Exception as e:
+        print("The PDF file cannot be found. Please check if the paper is available on the respective arXiv.")
+        print(e)
+        return None
 
     # Remove single newline characters
     extracted_text = extracted_text.replace("\n", " ")

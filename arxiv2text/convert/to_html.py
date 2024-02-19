@@ -38,7 +38,12 @@ def arxiv_to_html(pdf_url: str, output_folder: str) -> str:
     """
     # Function implementation remains unchanged.
     os.makedirs(output_folder, exist_ok=True)
-    response = requests.get(pdf_url)
+    try:
+        response = requests.get(pdf_url)
+    except Exception as e:
+        print("The PDF file cannot be found. Please check if the paper is available on the respective arXiv.")
+        print(e)
+        return None
     pdf_file = io.BytesIO(response.content)
 
     resource_manager = PDFResourceManager()

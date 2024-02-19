@@ -21,7 +21,12 @@ def arxiv_to_text(pdf_url: str, output_folder: Optional[str] = None) -> str:
     Raises:
         requests.exceptions.RequestException: If there is an issue with the HTTP request to the URL.
     """
-    response = requests.get(pdf_url)
+    try:
+        response = requests.get(pdf_url)
+    except Exception as e:
+        print("The PDF file cannot be found. Please check if the paper is available on the respective arXiv.")
+        print(e)
+        return None
     pdf_file = io.BytesIO(response.content)
 
     resource_manager = PDFResourceManager()
