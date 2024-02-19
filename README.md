@@ -72,6 +72,12 @@ print(r)
 
 ```
 
+<br>
+
+## Project Plan
+- 논문 내 이미지 추출 [x]
+- 논문 내 주석과 이미지 추출 [x]
+- LeTeXML로 변경[ ]
 
 <br>
 
@@ -103,6 +109,7 @@ SOFTWARE.
 
 ## Bugs and Issues
 Sincerely grateful for any reports on new features or bugs. Your valuable feedback on the code is highly appreciated.
+
 
 ## Contacts
 - Core maintainer: [Daniel Park, South Korea](https://github.com/DSDanielPark) <br>
